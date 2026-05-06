@@ -7,9 +7,9 @@ description: Use this skill when the user wants to audit an OpenClaw-native Skil
 
 ## Core Mission
 
-Act as a fail-closed delivery gate for OpenClaw-native repositories. Audit the current development result before deployment and output exactly one result: `PASS`, `PASS_WITH_WARNINGS`, or `FAIL`.
+Act as a fail-closed delivery auditor for OpenClaw-native repositories. Audit both deployability and delivery quality before deployment. Output section results and one overall result using only `PASS`, `PASS_WITH_WARNINGS`, or `FAIL`.
 
-Do not write code, deploy, edit runtime workspaces, or repair findings unless the user explicitly changes the task. This skill judges deployment readiness only.
+Do not write code, deploy, edit runtime workspaces, or repair findings unless the user explicitly changes the task. This skill judges release gate safety, delivery quality, runtime readiness, and continuity.
 
 ## Required Inputs
 
@@ -27,10 +27,12 @@ If these cannot be inferred from `AGENTS.md`, `docs/project_manifest.md`, `docs/
 
 1. Inspect repository structure before deciding artifact type or runtime boundary.
 2. Read the required project documents and deployment manifest.
-3. Load `references/audit_checklist.md` for the detailed checklist.
-4. Check structure, specification consistency, deployment readiness, sensitive-file risk, and OpenClaw command policy.
-5. Run the validation command. Do not claim validation ran unless it actually ran.
-6. Produce a Markdown audit report. Save it to `docs/delivery_audit_report.md` only if the user asks.
+3. Load `references/audit_checklist.md` for the release gate checklist.
+4. Load `references/quality_audit_checklist.md` for delivery quality, runtime readiness, and continuity checks.
+5. Check structure, specification consistency, deployment readiness, sensitive-file risk, and OpenClaw command policy.
+6. Evaluate Product Fit, Artifact Design Quality, Implementation Quality, Test Quality, User Experience Quality, Runtime Readiness, and Maintainability / Handoff.
+7. Run the validation command. Do not claim validation ran unless it actually ran.
+8. Produce a Markdown audit report. Save it to `docs/delivery_audit_report.md` only if the user asks.
 
 ## Files to Inspect
 
@@ -66,11 +68,28 @@ Recommend but do not always fail on missing:
 
 ## Result Rules
 
-Use `FAIL` when any blocking issue exists, including missing required documents, missing or incomplete `docs/deploy_manifest.md`, unclear artifact type, unclear source or runtime target, failed or missing validation command, high-risk sensitive files, unconfirmed destructive commands, missing Skill frontmatter, or missing required agent identity files.
+Report these section results:
 
-Use `PASS_WITH_WARNINGS` only when all core deployment gates pass and remaining issues are non-blocking, such as missing recommended handoff docs, incomplete non-critical tests, or documentation TODOs that do not affect deployment safety.
+- Overall Result
+- Gate Result
+- Quality Result
+- Runtime Readiness Result
+- Continuity Result
 
-Use `PASS` only when required files are present, artifact type and runtime target are clear, deployment manifest is complete, validation passes, no sensitive files are found, no unconfirmed OpenClaw commands are found, and the deployment boundary is explicit.
+Use `FAIL` for Gate Result when any blocking gate issue exists, including missing required documents, missing or incomplete `docs/deploy_manifest.md`, unclear artifact type, unclear source or runtime target, failed or missing validation command, high-risk sensitive files, unconfirmed destructive commands, missing Skill frontmatter, or missing required agent identity files.
+
+Use `FAIL` for Quality Result when the project goal, artifact design, implementation, tests, or user experience are not good enough to safely deploy, unless the project is explicitly marked experimental and the gate checks pass.
+
+Use `PASS_WITH_WARNINGS` only when all core gates pass and remaining issues are non-blocking. For test quality, passing tests are not enough: if test content cannot be evaluated for core workflow, failure cases, invalid input, and safety boundaries, mark Test Quality `PASS_WITH_WARNINGS`, not `PASS`.
+
+Overall Result rules:
+
+- Gate Result `FAIL` means Overall Result `FAIL`.
+- Security audit `FAIL` means Overall Result `FAIL`.
+- Runtime Readiness Result `FAIL` means Overall Result `FAIL`.
+- Quality Result `FAIL` should block deployment unless the project is explicitly marked experimental.
+- Any section `PASS_WITH_WARNINGS` means Overall Result cannot be better than `PASS_WITH_WARNINGS`.
+- Overall Result may be `PASS` only when Gate, Security, Runtime Readiness, Quality, and Continuity are all `PASS`.
 
 If unsure, fail closed.
 
@@ -81,7 +100,23 @@ Always output this Markdown report shape:
 ```markdown
 # Delivery Audit Report
 
-## Result
+## Overall Result
+
+PASS / PASS_WITH_WARNINGS / FAIL
+
+## Gate Result
+
+PASS / PASS_WITH_WARNINGS / FAIL
+
+## Quality Result
+
+PASS / PASS_WITH_WARNINGS / FAIL
+
+## Runtime Readiness Result
+
+PASS / PASS_WITH_WARNINGS / FAIL
+
+## Continuity Result
 
 PASS / PASS_WITH_WARNINGS / FAIL
 
@@ -113,6 +148,69 @@ PASS / PASS_WITH_WARNINGS / FAIL
 
 ...
 
+## Gate Audit
+
+### Passed
+
+- ...
+
+### Warnings
+
+- ...
+
+### Failed
+
+- ...
+
+## Security Audit
+
+...
+
+## Quality Assessment
+
+### Product Fit
+
+Result: PASS / PASS_WITH_WARNINGS / FAIL
+
+Notes:
+...
+
+### Artifact Design Quality
+
+Result: PASS / PASS_WITH_WARNINGS / FAIL
+
+Notes:
+...
+
+### Implementation Quality
+
+Result: PASS / PASS_WITH_WARNINGS / FAIL
+
+Notes:
+...
+
+### Test Quality
+
+Result: PASS / PASS_WITH_WARNINGS / FAIL
+
+Notes:
+...
+
+### User Experience Quality
+
+Result: PASS / PASS_WITH_WARNINGS / FAIL
+
+Notes:
+...
+
+## Runtime Readiness
+
+...
+
+## Maintainability / Handoff
+
+...
+
 ## Passed Checks
 
 - ...
@@ -130,6 +228,10 @@ PASS / PASS_WITH_WARNINGS / FAIL
 - ...
 
 ## Required Fixes Before Deployment
+
+1. ...
+
+## Quality Fixes Before Next Iteration
 
 1. ...
 
@@ -152,6 +254,8 @@ Do not invent OpenClaw CLI commands. Only treat commands as confirmed when they 
 
 Default to running only `bash scripts/validate.sh` unless the user or repository documents explicitly confirm another validation command.
 
+Treat stale template artifacts as deployment risks. If an agent-only project contains an unused `openclaw/skill/SKILL.md` placeholder, mark at least `WARNING`; mark `FAIL` if it can confuse source package or runtime target selection. Apply the symmetric check to skill-only projects with unused `openclaw/agent/` content.
+
 ## Forbidden Behaviors
 
 Do not:
@@ -170,7 +274,9 @@ Do not:
 Before finishing, ensure:
 
 - The report includes one clear result.
+- Section results are included for Gate, Quality, Runtime Readiness, and Continuity.
 - All blocking issues are listed.
+- Quality fixes are separated from required deployment fixes.
 - Validation command status is truthful.
 - Sensitive-file findings omit contents.
 - Deployment readiness is judged from documents and actual checks, not assumptions.

@@ -158,9 +158,11 @@ Require clear answers for:
 
 Any missing core deployment readiness item should be `FAIL`.
 
-## Final Result
+## Gate Result
 
-Use `PASS` only when:
+Use this checklist to determine Gate Result and Security Audit findings. Then combine it with Quality Result, Runtime Readiness Result, and Continuity Result from `quality_audit_checklist.md`.
+
+Gate Result may be `PASS` only when:
 
 - Required files are complete.
 - Artifact type is clear.
@@ -171,6 +173,6 @@ Use `PASS` only when:
 - Deployment boundary is clear.
 - Next deployment step is explicit.
 
-Use `PASS_WITH_WARNINGS` only when core gates pass but non-blocking issues remain.
+Gate Result may be `PASS_WITH_WARNINGS` only when core gates pass but non-blocking gate issues remain.
 
-Use `FAIL` for any blocking issue. If uncertain, fail closed.
+Gate Result must be `FAIL` for any blocking gate issue. If uncertain, fail closed.

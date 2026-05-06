@@ -1,4 +1,4 @@
 interface:
   display_name: "OpenClaw Delivery Auditor"
-  short_description: "Audit OpenClaw-native delivery readiness before deployment."
-  default_prompt: "Audit this OpenClaw-native development repository before deployment and produce a PASS, PASS_WITH_WARNINGS, or FAIL delivery audit report."
+  short_description: "Audit OpenClaw-native release gate safety, quality, runtime readiness, and handoff before deployment."
+  default_prompt: "Audit this OpenClaw-native development repository before deployment. Produce a delivery audit report with Overall, Gate, Quality, Runtime Readiness, and Continuity results using PASS, PASS_WITH_WARNINGS, or FAIL."

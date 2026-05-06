@@ -103,6 +103,13 @@ Suggested first task:
 - Code writing allowed: Yes / No
 - Deployment allowed: Yes / No
 - Validation commands: ...
+- Do not deploy without delivery audit.
+- Do not deploy without `docs/deploy_manifest.md`.
+- Do not manually copy files into `~/.openclaw`.
+- Do not invent OpenClaw CLI commands.
+- Deployment must be handled by the approved deployment workflow or `openclaw_internal_deployer` Skill.
+- Run `bash scripts/validate.sh` before finishing.
+- Report files changed, commands run, validation result, and anything not validated.
 ~~~
 
 ## Full Document Set Mode
@@ -123,6 +130,10 @@ Output separate sections with exact filenames:
 ...
 
 # docs/decision_log.md
+
+...
+
+# docs/deploy_manifest.md
 
 ...
 ~~~
@@ -239,3 +250,9 @@ This project is designed as <OpenClaw Skill / OpenClaw sub-agent workspace / Bot
 
 Future coding agents should start from `docs/project_spec.md` and `docs/openclaw-contract.md`, respect the runtime boundary, and run confirmed validation commands before completion.
 ~~~
+
+## docs/deploy_manifest.md
+
+Generate this document from `deploy_manifest_template.md`.
+
+The generated manifest must agree with `docs/openclaw-contract.md` on artifact type, source package, runtime target, deployment mode, allowed files, forbidden files, validation, and deployment boundaries.

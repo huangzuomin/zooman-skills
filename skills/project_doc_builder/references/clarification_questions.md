@@ -27,12 +27,25 @@ Ask at most 5 questions. Choose the smallest set needed to unblock document gene
 - If this is a Skill, what should the `skill_name` be in `snake_case`?
 - If this is an agent, what should the `agent-name` be in `kebab-case`?
 - Has the user confirmed any deployment or runtime validation command?
+- What source package should be deployed: `openclaw/skill/`, `openclaw/agent/`, an agent internal Skill, or documentation only?
+- Which deployment mode applies: `skill_sync`, `agent_workspace_sync`, `agent_skill_sync`, `documentation_only`, or `custom_manual`?
+- Should deployment ever delete files from the runtime target, or should sync be additive unless explicitly approved?
+- What rollback behavior should be used if deployment fails?
 
 ## Testing and Handoff
 
 - What local validation command is confirmed by the template or user?
 - What manual runtime test should prove the Skill or agent works in OpenClaw?
 - Which files should the next coding agent read first before implementing?
+
+## Deploy Manifest Criticals
+
+Ask about these before generating a full document set if they cannot be inferred safely:
+
+- Artifact type.
+- Source package.
+- Runtime target.
+- Deployment mode.
 
 ## Good Question Pattern
 

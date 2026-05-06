@@ -25,6 +25,21 @@ When generating the full set, verify:
 - `docs/openclaw-contract.md` states development repository boundary, runtime boundary, source paths, target paths, allowed changes, forbidden changes, allowed commands, forbidden commands, validation requirements, and open questions.
 - `docs/test_plan.md` includes static validation, local functional validation, OpenClaw runtime validation, manual task tests, and regression checklist.
 - `docs/decision_log.md` records the positioning decision made during document generation.
+- `docs/deploy_manifest.md` states project, artifact type, development repository, source package, runtime target, deployment mode, pre-deployment requirements, allowed deploy files, forbidden deploy files, backup rule, deployment strategy, post-deployment validation, rollback, and deployment record.
+
+## Deploy Manifest Checklist
+
+Before finalizing a full document set, verify:
+
+- Deployment mode is explicit and uses one of `skill_sync`, `agent_workspace_sync`, `agent_skill_sync`, `documentation_only`, or `custom_manual`.
+- Source package is explicit.
+- Runtime target is explicit.
+- Files allowed to deploy are listed.
+- Files never to deploy are listed.
+- Backup rule is explicit.
+- Rollback rule is explicit.
+- Post-deployment validation is marked as verified or `To be confirmed`.
+- `docs/deploy_manifest.md` agrees with `docs/openclaw-contract.md`.
 
 ## Safety Checklist
 
@@ -36,6 +51,7 @@ Reject or revise output that:
 - Claims tests or validation have passed without evidence.
 - Instructs direct edits under `~/.openclaw/`.
 - Includes invented OpenClaw CLI commands.
+- Omits `docs/deploy_manifest.md` from a full document set.
 - Mixes development repository files and runtime workspace files without a clear boundary.
 
 ## Completion Report Checklist

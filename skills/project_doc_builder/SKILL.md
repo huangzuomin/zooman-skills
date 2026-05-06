@@ -9,7 +9,7 @@ description: Use this skill when the user wants to turn rough ideas, raw notes, 
 
 Transform vague ideas into development-ready OpenClaw project documents. Act like a senior product manager, senior engineer, and software architect working together: extract requirements, identify gaps, make careful assumptions, and produce documents that another coding agent can use for implementation.
 
-Do not write product code, deploy projects, edit `~/.openclaw/`, or invent OpenClaw commands. This skill produces project documents and clarification questions.
+Do not write product code, deploy projects, edit `~/.openclaw/`, or invent OpenClaw commands. This skill produces project documents, deployment manifests, and clarification questions.
 
 ## Intake Workflow
 
@@ -27,6 +27,7 @@ Do not write product code, deploy projects, edit `~/.openclaw/`, or invent OpenC
    - Non-goals
    - Risks
    - Dependencies
+   - Deployment Needs
    - Open Questions
    - Assumptions
 3. Decide whether missing information is critical, important but non-blocking, or optional.
@@ -52,12 +53,15 @@ Critical missing information blocks final documents:
 - Unknown artifact type when it cannot be inferred.
 - Unknown runtime or file-writing boundary.
 - Unknown whether the generated capability may write files.
+- Unknown source package, runtime target, or deployment mode when a full document set is requested.
 
 Important but non-blocking information may be assumed and listed under `Assumptions`:
 
 - Exact project name.
 - Exact Skill or agent name.
 - Manual runtime test command.
+- Rollback preference.
+- Whether delete sync is allowed.
 - Full edge-case list.
 - Detailed success metrics.
 
@@ -67,6 +71,8 @@ Optional information belongs under `Future Considerations` or `Open Questions`:
 - Nice-to-have features.
 - Advanced metrics.
 - Visual style.
+- Future CI/CD strategy.
+- Multi-environment deployment.
 
 ## Clarification Question Rules
 
@@ -86,8 +92,9 @@ Use **Full Document Set Mode** when the user asks for documents that Codex, Clau
 - `docs/openclaw-contract.md`
 - `docs/test_plan.md`
 - `docs/decision_log.md`
+- `docs/deploy_manifest.md`
 
-Use `references/project_doc_templates.md` for exact section structure and template details.
+Use `references/project_doc_templates.md` for exact section structure and template details. Use `references/deploy_manifest_template.md` when generating `docs/deploy_manifest.md`.
 
 ## Acceptance Criteria Standard
 
@@ -142,6 +149,16 @@ When generating full project documents, include a section named `Implementation 
 - Whether deployment is allowed.
 - Validation commands to run.
 
+Generated `Notes for Codex` must also state:
+
+- Do not deploy without delivery audit.
+- Do not deploy without `docs/deploy_manifest.md`.
+- Do not manually copy files into `~/.openclaw`.
+- Do not invent OpenClaw CLI commands.
+- Deployment must be handled by the approved deployment workflow or `openclaw_internal_deployer` Skill.
+- Run `bash scripts/validate.sh` before finishing.
+- Report files changed, commands run, validation result, and anything not validated.
+
 ## Validation Quality Checklist
 
 Before final output, run the checklist in `references/quality_checklists.md`. Revise if any required item fails.
@@ -158,6 +175,7 @@ Do not:
 - Write code.
 - Deploy.
 - Modify `~/.openclaw/`.
+- Generate a full document set without `docs/deploy_manifest.md`.
 - Invent commands, paths, test results, or success criteria.
 - Ask many low-value questions.
 - Mix Skill and sub-agent responsibilities without explaining the boundary.
@@ -172,4 +190,6 @@ Before responding, ensure:
 - Core capabilities have Given / When / Then acceptance criteria.
 - Runtime boundaries are explicit.
 - Allowed commands are confirmed or template-default only.
+- The deployment mode, source package, runtime target, backup rule, rollback rule, allowed deploy files, and forbidden deploy files are explicit.
+- `docs/deploy_manifest.md` agrees with `docs/openclaw-contract.md`.
 - The next action for a coding agent is obvious.

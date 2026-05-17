@@ -18,9 +18,9 @@ const {
 
   {filters.length > 0 && (
     <div class="sf-case-wall__filters" aria-label="Case filters">
-      <button type="button" data-case-filter="all">All</button>
+      <button type="button" data-case-filter="all" aria-pressed="true">All</button>
       {filters.map((filter) => (
-        <button type="button" data-case-filter={filter.value}>{filter.label}</button>
+        <button type="button" data-case-filter={filter.value} aria-pressed="false">{filter.label}</button>
       ))}
     </div>
   )}
@@ -44,4 +44,3 @@ const {
     ))}
   </div>
 </section>
-

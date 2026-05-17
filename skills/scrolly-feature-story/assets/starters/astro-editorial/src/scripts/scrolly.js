@@ -22,8 +22,18 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
 }
 
 const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+
+function getHashTarget(hash) {
+  if (!hash || hash === "#") return null;
+  try {
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {
+    return null;
+  }
+}
+
 const navTargets = navLinks
-  .map((link) => document.querySelector(link.getAttribute("href")))
+  .map((link) => getHashTarget(link.getAttribute("href")))
   .filter(Boolean);
 
 if ("IntersectionObserver" in window) {

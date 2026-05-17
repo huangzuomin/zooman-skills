@@ -6,7 +6,11 @@ filterGroups.forEach((group) => {
   if (buttons.length === 0 || cards.length === 0) return;
 
   function setFilter(value) {
-    buttons.forEach((button) => button.classList.toggle("is-active", button.dataset.caseFilter === value));
+    buttons.forEach((button) => {
+      const active = button.dataset.caseFilter === value;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
     cards.forEach((card) => {
       const visible = value === "all" || card.dataset.caseType === value;
       card.hidden = !visible;
@@ -19,4 +23,3 @@ filterGroups.forEach((group) => {
 
   setFilter("all");
 });
-

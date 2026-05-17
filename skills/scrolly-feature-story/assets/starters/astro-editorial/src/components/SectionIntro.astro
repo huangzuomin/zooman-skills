@@ -1,0 +1,17 @@
+---
+const { id, eyebrow, title, body, points = [] } = Astro.props;
+---
+
+<section class="section-intro reveal" id={id} aria-labelledby={`${id}-title`}>
+  <div class="section-label">{eyebrow}</div>
+  <div class="section-intro__body">
+    <h2 id={`${id}-title`}>{title}</h2>
+    <p>{body}</p>
+    {points.length > 0 && (
+      <ul>
+        {points.map((point) => <li>{point}</li>)}
+      </ul>
+    )}
+  </div>
+</section>
+

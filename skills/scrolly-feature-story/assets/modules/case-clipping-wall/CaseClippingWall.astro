@@ -1,0 +1,47 @@
+---
+const {
+  id = "cases",
+  eyebrow = "Case Evidence",
+  title = "Case clipping wall",
+  intro = "",
+  cases = [],
+  filters = []
+} = Astro.props;
+---
+
+<section class="sf-case-wall" id={id} aria-labelledby={`${id}-title`}>
+  <div class="sf-case-wall__heading">
+    <p class="sf-module-eyebrow">{eyebrow}</p>
+    <h2 id={`${id}-title`}>{title}</h2>
+    {intro && <p>{intro}</p>}
+  </div>
+
+  {filters.length > 0 && (
+    <div class="sf-case-wall__filters" aria-label="Case filters">
+      <button type="button" data-case-filter="all">All</button>
+      {filters.map((filter) => (
+        <button type="button" data-case-filter={filter.value}>{filter.label}</button>
+      ))}
+    </div>
+  )}
+
+  <div class="sf-case-wall__grid">
+    {cases.map((item) => (
+      <article class="sf-case-clipping" data-case-type={item.type || "all"}>
+        <div class="sf-case-clipping__topline">
+          <span>{item.label || item.type || "Case"}</span>
+          {item.year && <span>{item.year}</span>}
+        </div>
+        <h3>{item.title}</h3>
+        <p>{item.summary}</p>
+        {item.evidence && <p class="sf-case-clipping__evidence">{item.evidence}</p>}
+        {item.tags?.length > 0 && (
+          <div class="sf-module-tags" aria-label="Case tags">
+            {item.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
+</section>
+

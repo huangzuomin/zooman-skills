@@ -1,0 +1,98 @@
+.sf-data-dossier {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  max-width: var(--sf-max, 1180px);
+  margin: 0 auto;
+  padding: var(--sf-section-y, clamp(4rem, 9vw, 8rem)) var(--sf-page-x, clamp(1rem, 4vw, 2rem));
+}
+
+.sf-data-dossier__intro h2 {
+  margin: 0;
+  color: var(--sf-ink, #1f2421);
+  font-family: var(--sf-serif, "Noto Serif SC", "Songti SC", SimSun, serif);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.sf-data-dossier__intro p,
+.sf-data-metric p,
+.sf-data-dossier__evidence span {
+  color: var(--sf-muted, #68706a);
+}
+
+.sf-data-dossier__source {
+  border-left: 3px solid var(--sf-accent, #b7382f);
+  padding-left: 0.85rem;
+  font-size: 0.92rem;
+}
+
+.sf-data-dossier__board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.sf-data-metric,
+.sf-data-dossier__evidence article {
+  border: 1px solid var(--sf-line, #d7c9b5);
+  background: var(--sf-surface, #fffaf0);
+  padding: clamp(1rem, 2vw, 1.25rem);
+  box-shadow: var(--sf-shadow, 0 18px 50px rgba(39, 34, 26, 0.1));
+}
+
+.sf-data-metric strong {
+  display: block;
+  color: var(--sf-accent, #b7382f);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+}
+
+.sf-data-metric span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--sf-ink, #1f2421);
+  font-weight: 900;
+}
+
+.sf-data-dossier__evidence {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.sf-data-dossier__evidence p {
+  margin: 0 0 0.5rem;
+  color: var(--sf-accent, #b7382f);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sf-data-dossier__evidence h3 {
+  margin: 0 0 0.5rem;
+  color: var(--sf-ink, #1f2421);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.sf-module-eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--sf-accent, #b7382f);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+  .sf-data-dossier,
+  .sf-data-dossier__board,
+  .sf-data-dossier__evidence {
+    grid-template-columns: 1fr;
+  }
+}
+

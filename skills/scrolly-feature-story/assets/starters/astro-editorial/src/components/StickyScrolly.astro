@@ -1,0 +1,30 @@
+---
+const { id = "system", eyebrow, title, steps } = Astro.props;
+---
+
+<section class="scrolly" id={id} aria-labelledby={`${id}-title`} data-scrolly>
+  <div class="scrolly__graphic" aria-hidden="true">
+    <div class="scrolly__panel">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 id={`${id}-title`}>{title}</h2>
+      <div class="scrolly__diagram">
+        {steps.map((step, index) => (
+          <div class="diagram-node" data-visual-target={step.id}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{step.title}</strong>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="scrolly__steps">
+    {steps.map((step) => (
+      <article class="step reveal" data-step={step.id}>
+        <p class="eyebrow">{step.kicker}</p>
+        <h3>{step.title}</h3>
+        <p>{step.body}</p>
+      </article>
+    ))}
+  </div>
+</section>
+

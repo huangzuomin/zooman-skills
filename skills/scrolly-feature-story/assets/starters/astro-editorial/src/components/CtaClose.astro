@@ -1,0 +1,15 @@
+---
+const { id = "contact", cta } = Astro.props;
+---
+
+<section class="cta-close reveal" id={id} aria-labelledby={`${id}-title`}>
+  <p class="eyebrow">{cta.eyebrow}</p>
+  <h2 id={`${id}-title`}>{cta.title}</h2>
+  <p>{cta.body}</p>
+  <div class="cta-actions">
+    {cta.actions.map((action) => (
+      <a href={action.href}>{action.label}</a>
+    ))}
+  </div>
+</section>
+

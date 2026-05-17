@@ -1,0 +1,30 @@
+---
+const { id = "products", eyebrow, title, products } = Astro.props;
+---
+
+<section class="dossier-section" id={id} aria-labelledby={`${id}-title`}>
+  <div class="section-heading reveal">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id={`${id}-title`}>{title}</h2>
+  </div>
+  <div class="dossier-grid">
+    {products.map((product) => (
+      <article class="product-dossier reveal">
+        <div class="dossier-stamp">{product.type}</div>
+        <h3>{product.name}</h3>
+        <p>{product.summary}</p>
+        <dl>
+          <div>
+            <dt>Best for</dt>
+            <dd>{product.bestFor}</dd>
+          </div>
+          <div>
+            <dt>Evidence</dt>
+            <dd>{product.evidence}</dd>
+          </div>
+        </dl>
+      </article>
+    ))}
+  </div>
+</section>
+

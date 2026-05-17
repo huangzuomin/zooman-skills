@@ -1,0 +1,13 @@
+---
+const { organization, navItems } = Astro.props;
+---
+
+<header class="site-header" data-site-header>
+  <a class="brand" href="#top" aria-label="Back to top">{organization}</a>
+  <nav class="site-nav" aria-label="Story sections">
+    {navItems.map((item) => (
+      <a href={item.href} data-nav-link>{item.label}</a>
+    ))}
+  </nav>
+</header>
+

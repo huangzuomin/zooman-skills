@@ -1,0 +1,23 @@
+---
+const { meta, stats } = Astro.props;
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero__visual" aria-hidden="true">
+    <img src="/placeholders/editorial-map.svg" alt="" />
+  </div>
+  <div class="hero__content">
+    <p class="eyebrow">{meta.eyebrow}</p>
+    <h1 id="hero-title">{meta.title}</h1>
+    <p class="hero__dek">{meta.dek}</p>
+    <dl class="hero__stats">
+      {stats.map((stat) => (
+        <div>
+          <dt>{stat.value}</dt>
+          <dd>{stat.label}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+

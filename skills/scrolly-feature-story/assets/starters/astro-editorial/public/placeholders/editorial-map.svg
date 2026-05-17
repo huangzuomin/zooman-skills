@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Editorial map placeholder</title>
+  <desc id="desc">A placeholder visual for a civic editorial atlas with service nodes, dossier panels, and route lines.</desc>
+  <rect width="1200" height="760" fill="#fffaf0"/>
+  <path d="M96 585 C210 510 292 558 395 493 C488 434 502 320 640 304 C790 286 862 198 1032 152" fill="none" stroke="#d7c9b5" stroke-width="28" stroke-linecap="round"/>
+  <path d="M126 160 L350 88 L520 160 L733 102 L1030 210 L1090 488 L888 628 L620 594 L402 675 L160 570 Z" fill="#ebe0cf" stroke="#1f2421" stroke-width="4"/>
+  <path d="M350 88 L402 675 M520 160 L620 594 M733 102 L888 628 M160 570 L1090 488" stroke="#d7c9b5" stroke-width="3" stroke-dasharray="10 12"/>
+  <g fill="#b7382f" stroke="#fffaf0" stroke-width="8">
+    <circle cx="350" cy="250" r="24"/>
+    <circle cx="595" cy="332" r="24"/>
+    <circle cx="820" cy="250" r="24"/>
+    <circle cx="880" cy="500" r="24"/>
+    <circle cx="420" cy="540" r="24"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2421">
+    <text x="114" y="108">Civic atlas placeholder</text>
+    <text x="382" y="258">Node A</text>
+    <text x="628" y="340">Node B</text>
+    <text x="854" y="258">Node C</text>
+    <text x="914" y="508">Node D</text>
+    <text x="454" y="548">Node E</text>
+  </g>
+  <g transform="translate(92 640)">
+    <rect width="420" height="64" rx="0" fill="#1f2421"/>
+    <text x="24" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#fffaf0">Replace with approved map / diagram / newsroom visual</text>
+  </g>
+</svg>
+

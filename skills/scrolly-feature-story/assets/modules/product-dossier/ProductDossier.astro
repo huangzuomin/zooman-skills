@@ -1,0 +1,62 @@
+---
+const {
+  id = "products",
+  eyebrow = "Product Dossier",
+  title = "Products and services",
+  intro = "",
+  products = []
+} = Astro.props;
+---
+
+<section class="sf-product-dossier" id={id} aria-labelledby={`${id}-title`}>
+  <div class="sf-product-dossier__heading">
+    <p class="sf-module-eyebrow">{eyebrow}</p>
+    <h2 id={`${id}-title`}>{title}</h2>
+    {intro && <p>{intro}</p>}
+  </div>
+
+  <div class="sf-product-dossier__grid">
+    {products.map((product, index) => (
+      <article class="sf-product-card" data-importance={product.importance || "standard"}>
+        <div class="sf-product-card__meta">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <span>{product.type || "Service"}</span>
+        </div>
+        <h3>{product.name}</h3>
+        <p>{product.summary}</p>
+        <dl>
+          {product.problem && (
+            <div>
+              <dt>Problem</dt>
+              <dd>{product.problem}</dd>
+            </div>
+          )}
+          {product.service && (
+            <div>
+              <dt>Service</dt>
+              <dd>{product.service}</dd>
+            </div>
+          )}
+          {product.evidence && (
+            <div>
+              <dt>Evidence</dt>
+              <dd>{product.evidence}</dd>
+            </div>
+          )}
+          {product.bestFor && (
+            <div>
+              <dt>Best for</dt>
+              <dd>{product.bestFor}</dd>
+            </div>
+          )}
+        </dl>
+        {product.tags?.length > 0 && (
+          <div class="sf-module-tags" aria-label="Product tags">
+            {product.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
+</section>
+

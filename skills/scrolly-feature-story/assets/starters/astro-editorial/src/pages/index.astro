@@ -1,0 +1,41 @@
+---
+import EditorialLayout from "../layouts/EditorialLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import ImmersiveHero from "../components/ImmersiveHero.astro";
+import SectionIntro from "../components/SectionIntro.astro";
+import StickyScrolly from "../components/StickyScrolly.astro";
+import ProductDossierGrid from "../components/ProductDossierGrid.astro";
+import CaseClippingWall from "../components/CaseClippingWall.astro";
+import DataDossier from "../components/DataDossier.astro";
+import MapStory from "../components/MapStory.astro";
+import CtaClose from "../components/CtaClose.astro";
+import {
+  storyMeta,
+  navItems,
+  heroStats,
+  positioning,
+  scrollySteps,
+  products,
+  cases,
+  metrics,
+  mapPoints,
+  cta
+} from "../data/story";
+---
+
+<EditorialLayout title={storyMeta.title} description={storyMeta.description}>
+  <SiteHeader organization={storyMeta.organization} navItems={navItems} />
+  <main id="main">
+    <ImmersiveHero meta={storyMeta} stats={heroStats} />
+    <SectionIntro id="positioning" eyebrow={positioning.eyebrow} title={positioning.title} body={positioning.body} points={positioning.points} />
+    <StickyScrolly id="system" eyebrow="Scrolly System" title="A clear scroll state model keeps the story coherent." steps={scrollySteps} />
+    <ProductDossierGrid id="products" eyebrow="Product Dossier" title="Present services as evidence-backed dossiers." products={products} />
+    <CaseClippingWall id="cases" eyebrow="Case Evidence" title="Turn examples into a readable proof wall." cases={cases} />
+    <DataDossier id="data" eyebrow="Data Dossier" title="Use metrics only when they support a claim." metrics={metrics} />
+    <MapStory id="map" eyebrow="Civic Atlas" title="Use maps when place changes the meaning." points={mapPoints} />
+    <CtaClose id="contact" cta={cta} />
+  </main>
+  <script>
+    import "../scripts/scrolly.js";
+  </script>
+</EditorialLayout>

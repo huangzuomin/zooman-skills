@@ -1,0 +1,22 @@
+---
+const { id = "map", eyebrow, title, points } = Astro.props;
+---
+
+<section class="map-story" id={id} aria-labelledby={`${id}-title`}>
+  <div class="map-story__visual reveal">
+    <img src="/placeholders/editorial-map.svg" alt="Placeholder map showing intended regional story structure" />
+  </div>
+  <div class="map-story__content">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id={`${id}-title`}>{title}</h2>
+    <ol>
+      {points.map((point) => (
+        <li class="reveal">
+          <strong>{point.name}</strong>
+          <span>{point.detail}</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+

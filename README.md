@@ -1,6 +1,6 @@
-# OpenClaw Skills
+# Zooman Skills
 
-Shared OpenClaw skills for initializing and developing OpenClaw-native applications, skills, and sub-agents.
+Shared Codex/OpenClaw-style skills for reusable product, editorial, frontend, and agent workflows.
 
 ## Skills
 
@@ -8,6 +8,7 @@ Shared OpenClaw skills for initializing and developing OpenClaw-native applicati
 - `openclaw_internal_deployer`: Deploy audited OpenClaw-native Skills, sub-agent workspaces, or agent packages into approved runtime workspaces.
 - `openclaw_delivery_auditor`: Audit an OpenClaw-native development repository before deployment and produce a PASS, PASS_WITH_WARNINGS, or FAIL delivery gate report.
 - `project_doc_builder`: Turn rough ideas and notes into structured OpenClaw project development documents.
+- `scrolly-feature-story`: Create production-grade media scrollytelling pages from product manuals, feature stories, data narratives, reports, and campaign briefs.
 
 ## Layout
 

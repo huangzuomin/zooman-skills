@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>温州新闻网产品和服务手册 2026 | 城市智媒服务平台</title>
+    <meta name="description" content="温州新闻网产品和服务手册 2026 版滚动叙事网页示例。">
+    <script>document.documentElement.classList.add("js");</script>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f6f2e9;
+        --paper-2: #ebe4d6;
+        --ink: #202722;
+        --muted: #687168;
+        --line: rgba(32, 39, 34, .16);
+        --deep: #162720;
+        --deep-2: #223b31;
+        --cream: #fffaf0;
+        --accent: #a6422d;
+        --accent-2: #2f7066;
+        --gold: #b68c4a;
+        --blue: #375d7d;
+        --max: 1180px;
+        --radius: 8px;
+        --shadow: 0 24px 80px rgba(31, 42, 36, .14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgba(32, 39, 34, .045) 1px, transparent 1px) 0 0 / 80px 80px,
+          linear-gradient(180deg, var(--paper), #fbf8ef 46%, #efe7d8);
+        color: var(--ink);
+        font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button:focus-visible,
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid color-mix(in oklch, var(--accent), white 28%);
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: fixed;
+        left: 16px;
+        top: 16px;
+        z-index: 100;
+        transform: translateY(-160%);
+        padding: 10px 14px;
+        background: var(--deep);
+        color: var(--cream);
+        border-radius: 4px;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .progress {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 90;
+        height: 4px;
+        background: rgba(32, 39, 34, .08);
+      }
+
+      .progress span {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      }
+
+      .topbar {
+        position: sticky;
+        top: 4px;
+        z-index: 80;
+        border-bottom: 1px solid var(--line);
+        background: color-mix(in oklch, var(--paper), transparent 12%);
+        backdrop-filter: blur(16px);
+      }
+
+      .topbar-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        padding: 14px 24px;
+      }
+
+      .brand {
+        display: grid;
+        gap: 2px;
+        min-width: 174px;
+      }
+
+      .brand strong {
+        font-size: 15px;
+      }
+
+      .brand span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .toc {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .toc a {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        color: var(--muted);
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      .toc a.is-active,
+      .toc a:hover {
+        background: var(--deep);
+        color: var(--cream);
+      }
+
+      main {
+        overflow: clip;
+      }
+
+      .section {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: clamp(72px, 10vw, 144px) 24px;
+        scroll-margin-top: 92px;
+      }
+
+      .hero {
+        min-height: calc(100svh - 72px);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+        align-items: end;
+        gap: clamp(32px, 7vw, 96px);
+        padding-top: clamp(96px, 12vw, 160px);
+      }
+
+      .kicker {
+        display: inline-flex;
+        width: fit-content;
+        gap: 8px;
+        align-items: center;
+        margin: 0 0 24px;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--accent);
+        background: rgba(255, 250, 240, .52);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .kicker::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2 {
+        letter-spacing: 0;
+        line-height: 1.05;
+      }
+
+      h1 {
+        max-width: 880px;
+        margin-bottom: 24px;
+        font-size: 112px;
+        font-weight: 900;
+        overflow-wrap: anywhere;
+      }
+
+      h1 span {
+        display: block;
+      }
+
+      .hero .subtitle {
+        max-width: 760px;
+        color: var(--deep-2);
+        font-size: 34px;
+        line-height: 1.38;
+      }
+
+      .slogan-list {
+        display: grid;
+        gap: 12px;
+        padding: 0;
+        margin: 32px 0 0;
+        list-style: none;
+      }
+
+      .slogan-list li {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .slogan-list li::before {
+        content: "";
+        width: 30px;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .hero-panel {
+        position: relative;
+        min-height: 520px;
+        border: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 30% 20%, rgba(166, 66, 45, .28), transparent 26%),
+          radial-gradient(circle at 75% 70%, rgba(47, 112, 102, .26), transparent 24%),
+          linear-gradient(155deg, var(--cream), #ded6c6);
+        box-shadow: var(--shadow);
+      }
+
+      .map-lines {
+        position: absolute;
+        inset: 24px;
+        border: 1px solid rgba(32, 39, 34, .12);
+        background:
+          linear-gradient(90deg, rgba(32, 39, 34, .08) 1px, transparent 1px) 0 0 / 44px 44px,
+          linear-gradient(180deg, rgba(32, 39, 34, .08) 1px, transparent 1px) 0 0 / 44px 44px;
+      }
+
+      .map-node {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border: 3px solid var(--cream);
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 1px rgba(32, 39, 34, .18);
+      }
+
+      .map-node:nth-child(1) { left: 20%; top: 22%; }
+      .map-node:nth-child(2) { right: 22%; top: 34%; background: var(--accent-2); }
+      .map-node:nth-child(3) { left: 38%; bottom: 24%; background: var(--gold); }
+      .map-node:nth-child(4) { right: 18%; bottom: 18%; background: var(--blue); }
+
+      .panel-label {
+        position: absolute;
+        left: 28px;
+        bottom: 28px;
+        max-width: 260px;
+        padding: 18px;
+        background: rgba(255, 250, 240, .86);
+        border: 1px solid var(--line);
+      }
+
+      .panel-label strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 22px;
+      }
+
+      .panel-label span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(180px, 320px) minmax(0, 1fr);
+        gap: clamp(28px, 6vw, 84px);
+        align-items: start;
+        margin-bottom: 48px;
+      }
+
+      .section-index {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .section h2 {
+        max-width: 820px;
+        font-size: 78px;
+      }
+
+      .section-lede {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 26px;
+        line-height: 1.62;
+      }
+
+      .manifesto {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
+        gap: clamp(28px, 6vw, 80px);
+        align-items: center;
+      }
+
+      .manifesto-copy {
+        max-width: 740px;
+        font-size: 22px;
+        line-height: 1.8;
+      }
+
+      .quote-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .quote-stack blockquote {
+        margin: 0;
+        padding: 18px 20px;
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 250, 240, .72);
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .role-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .role {
+        min-height: 164px;
+        display: grid;
+        align-content: space-between;
+        padding: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 250, 240, .64);
+      }
+
+      .role span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .role strong {
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .matrix-story {
+        display: grid;
+        grid-template-columns: minmax(0, .95fr) minmax(340px, 1fr);
+        gap: clamp(32px, 6vw, 80px);
+        align-items: start;
+      }
+
+      .matrix-visual {
+        position: sticky;
+        top: 104px;
+        min-height: 620px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        background: linear-gradient(160deg, var(--deep), #29473b);
+        color: var(--cream);
+        box-shadow: var(--shadow);
+      }
+
+      .matrix-visual h3 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+
+      .matrix-visual p {
+        color: rgba(255, 250, 240, .72);
+        line-height: 1.7;
+      }
+
+      .capability-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .capability-item {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border: 1px solid rgba(255, 250, 240, .16);
+        background: rgba(255, 250, 240, .06);
+        transition: background .35s ease, transform .35s ease, border-color .35s ease;
+      }
+
+      .capability-item.is-active {
+        background: rgba(255, 250, 240, .18);
+        border-color: rgba(255, 250, 240, .48);
+        transform: translateX(8px);
+      }
+
+      .capability-item em {
+        font-style: normal;
+        color: var(--gold);
+        font-weight: 800;
+      }
+
+      .capability-item strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .capability-item span {
+        color: rgba(255, 250, 240, .66);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .matrix-steps {
+        display: grid;
+        gap: 42vh;
+        padding: 14vh 0;
+      }
+
+      .matrix-step {
+        padding: 26px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .matrix-step h3 {
+        margin-bottom: 12px;
+        font-size: 48px;
+        line-height: 1.1;
+      }
+
+      .matrix-step p {
+        color: var(--muted);
+        font-size: 20px;
+        line-height: 1.75;
+      }
+
+      .product-band {
+        border-top: 1px solid var(--line);
+      }
+
+      .product-band:nth-of-type(odd) {
+        background: linear-gradient(180deg, rgba(235, 228, 214, .42), rgba(255, 250, 240, 0));
+      }
+
+      .band-layout {
+        display: grid;
+        grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+        gap: clamp(28px, 5vw, 68px);
+      }
+
+      .band-intro {
+        position: sticky;
+        top: 104px;
+        align-self: start;
+      }
+
+      .band-intro h2 {
+        font-size: 60px;
+      }
+
+      .band-intro p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .product-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .product-card {
+        display: grid;
+        grid-template-columns: minmax(140px, 210px) minmax(0, 1fr);
+        gap: 24px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        background: rgba(255, 250, 240, .64);
+      }
+
+      .product-card .num {
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .product-card h3 {
+        margin: 6px 0 0;
+        font-size: 24px;
+        line-height: 1.2;
+      }
+
+      .product-card p {
+        margin-bottom: 12px;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .chip {
+        display: inline-flex;
+        min-height: 30px;
+        align-items: center;
+        padding: 5px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        background: rgba(255, 250, 240, .54);
+        font-size: 13px;
+      }
+
+      .highlight-panel {
+        padding: 26px;
+        border: 1px solid color-mix(in oklch, var(--accent), transparent 52%);
+        background: color-mix(in oklch, var(--accent), var(--cream) 90%);
+      }
+
+      .highlight-panel h3 {
+        margin-bottom: 14px;
+        font-size: 28px;
+      }
+
+      .highlight-list {
+        display: grid;
+        gap: 12px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .highlight-list li {
+        padding-left: 18px;
+        border-left: 2px solid var(--accent);
+        color: var(--deep-2);
+        line-height: 1.65;
+      }
+
+      .case-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+
+      .filter-btn {
+        min-height: 40px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 250, 240, .72);
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .filter-btn.is-active {
+        border-color: var(--deep);
+        background: var(--deep);
+        color: var(--cream);
+      }
+
+      .case-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .case-card {
+        min-height: 260px;
+        display: grid;
+        align-content: space-between;
+        padding: 20px;
+        border: 1px solid var(--line);
+        background: rgba(255, 250, 240, .68);
+      }
+
+      .case-card[hidden] {
+        display: none;
+      }
+
+      .case-card .tag {
+        width: fit-content;
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: color-mix(in oklch, var(--accent-2), transparent 82%);
+        color: var(--accent-2);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .case-card h3 {
+        margin: 48px 0 12px;
+        font-size: 23px;
+        line-height: 1.2;
+      }
+
+      .case-card p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      details.package {
+        border: 1px solid var(--line);
+        background: rgba(255, 250, 240, .68);
+      }
+
+      details.package summary {
+        min-height: 160px;
+        display: grid;
+        align-content: space-between;
+        padding: 18px;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      details.package summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .package-code {
+        color: var(--accent);
+        font-weight: 900;
+        font-size: 13px;
+      }
+
+      .package-title {
+        font-size: 22px;
+        line-height: 1.2;
+        font-weight: 850;
+      }
+
+      .package-body {
+        padding: 0 18px 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .cooperation-grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .coop {
+        min-height: 180px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 250, 240, .7);
+      }
+
+      .coop strong {
+        display: block;
+        margin-bottom: 14px;
+        font-size: 20px;
+      }
+
+      .coop span {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .finale {
+        max-width: none;
+        background:
+          linear-gradient(90deg, rgba(255, 250, 240, .05) 1px, transparent 1px) 0 0 / 80px 80px,
+          radial-gradient(circle at 80% 15%, rgba(182, 140, 74, .22), transparent 32%),
+          var(--deep);
+        color: var(--cream);
+      }
+
+      .finale-inner {
+        max-width: var(--max);
+        min-height: 100svh;
+        margin: 0 auto;
+        display: grid;
+        align-content: center;
+        padding: clamp(88px, 12vw, 160px) 24px;
+      }
+
+      .finale-words {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 44px;
+      }
+
+      .finale-words span {
+        font-size: 96px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .finale p {
+        max-width: 820px;
+        color: rgba(255, 250, 240, .76);
+        font-size: 21px;
+        line-height: 1.8;
+      }
+
+      .finale-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0;
+        margin: 34px 0 0;
+        list-style: none;
+      }
+
+      .finale-list li {
+        padding: 16px;
+        border: 1px solid rgba(255, 250, 240, .18);
+        color: rgba(255, 250, 240, .78);
+      }
+
+      .js [data-reveal] {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity .72s cubic-bezier(.22, 1, .36, 1),
+          transform .72s cubic-bezier(.22, 1, .36, 1);
+      }
+
+      .js [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1020px) {
+        .hero,
+        .manifesto,
+        .matrix-story,
+        .band-layout,
+        .section-head {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-panel {
+          min-height: 360px;
+        }
+
+        h1 {
+          font-size: 78px;
+        }
+
+        .hero .subtitle {
+          font-size: 28px;
+        }
+
+        .section h2,
+        .band-intro h2 {
+          font-size: 54px;
+        }
+
+        .section-lede {
+          font-size: 23px;
+        }
+
+        .manifesto-copy {
+          font-size: 20px;
+        }
+
+        .matrix-step h3 {
+          font-size: 42px;
+        }
+
+        .finale-words span {
+          font-size: 68px;
+        }
+
+        .role-grid,
+        .case-grid,
+        .package-grid,
+        .cooperation-grid,
+        .finale-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .band-intro,
+        .matrix-visual {
+          position: relative;
+          top: auto;
+        }
+
+        .matrix-steps {
+          gap: 56px;
+          padding: 0;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .topbar-inner {
+          align-items: stretch;
+          flex-direction: column;
+          gap: 10px;
+          padding-inline: 16px;
+        }
+
+        .section {
+          padding: 72px 18px;
+        }
+
+        .hero {
+          padding-top: 72px;
+        }
+
+        h1 {
+          font-size: 52px;
+          line-height: 1.08;
+        }
+
+        .hero .subtitle {
+          font-size: 22px;
+        }
+
+        .section h2,
+        .band-intro h2 {
+          font-size: 38px;
+        }
+
+        .section-lede {
+          font-size: 20px;
+        }
+
+        .manifesto-copy,
+        .matrix-step p,
+        .finale p,
+        .step p,
+        .close p {
+          font-size: 18px;
+        }
+
+        .matrix-step h3 {
+          font-size: 32px;
+        }
+
+        .finale-words span {
+          font-size: 42px;
+        }
+
+        .role-grid,
+        .case-grid,
+        .package-grid,
+        .cooperation-grid,
+        .finale-list {
+          grid-template-columns: 1fr;
+        }
+
+        .product-card {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-panel {
+          min-height: 300px;
+        }
+
+        .matrix-visual {
+          min-height: auto;
+        }
+
+        .case-card,
+        .coop {
+          min-height: auto;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: .01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: .01ms !important;
+          scroll-behavior: auto !important;
+        }
+
+        .js [data-reveal] {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#hero" aria-label="回到首页">
+          <strong>温州新闻网</strong>
+          <span>产品和服务手册 2026</span>
+        </a>
+        <nav class="toc" aria-label="章节导航">
+          <a href="#hero">入场</a>
+          <a href="#why">重构</a>
+          <a href="#position">定位</a>
+          <a href="#overview">全景</a>
+          <a href="#content">内容</a>
+          <a href="#platform">运营</a>
+          <a href="#event">活动</a>
+          <a href="#digital">数字</a>
+          <a href="#data">舆情</a>
+          <a href="#tech">技术</a>
+          <a href="#ai">AI</a>
+          <a href="#cases">案例</a>
+          <a href="#packages">方案</a>
+          <a href="#finale">结束</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="hero" class="section hero" data-section>
+        <div data-reveal>
+          <p class="kicker">城市智媒服务平台</p>
+          <h1><span>从新闻传播</span><span>到城市服务</span></h1>
+          <p class="subtitle">温州新闻网 · 产品和服务手册 2026</p>
+          <ul class="slogan-list" aria-label="核心能力">
+            <li>从新闻传播到平台运营</li>
+            <li>从技术开发到数据服务</li>
+            <li>从活动执行到 AI 应用</li>
+          </ul>
+        </div>
+        <div class="hero-panel" aria-label="城市智媒能力图谱" data-reveal>
+          <div class="map-lines">
+            <i class="map-node"></i>
+            <i class="map-node"></i>
+            <i class="map-node"></i>
+            <i class="map-node"></i>
+          </div>
+          <div class="panel-label">
+            <strong>一体化智媒服务</strong>
+            <span>内容、平台、技术、数据、活动与 AI 能力在同一张服务图谱中协同。</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="section" data-section>
+        <div class="manifesto">
+          <div class="manifesto-copy" data-reveal>
+            <p class="kicker">为什么重做这本手册</p>
+            <p>温州新闻网正在从传统新闻网站，升级为面向城市治理、政务传播、产业服务和公共连接的综合型智媒服务平台。</p>
+            <p>过去，服务能力分散在不同部门、项目和案例中。有些能力稳定运营多年，却没有被清晰命名；有些项目具备复制推广条件，却仍停留在一次性表达；AI 智能体、AIGC、舆情数据接口、县域融媒协作等新业务，也需要进入统一产品体系。</p>
+          </div>
+          <div class="quote-stack" data-reveal>
+            <blockquote>把“我们做过什么”转化为“我们能提供什么”。</blockquote>
+            <blockquote>把“部门职责”转化为“客户服务”。</blockquote>
+            <blockquote>把“项目经验”转化为“可复制产品”。</blockquote>
+            <blockquote>把“零散能力”转化为“城市智媒服务体系”。</blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section id="position" class="section" data-section>
+        <div class="section-head" data-reveal>
+          <span class="section-index">Positioning</span>
+          <div>
+            <h2>我们不是单一环节外包，而是从策划到复盘的闭环支撑。</h2>
+            <p class="section-lede">依托新闻传播、技术开发、平台运营、数据分析、视觉设计、活动执行与 AI 应用七维能力，面向党政机关、企事业单位、县域融媒机构与城市重点项目，提供一体化智媒服务。</p>
+          </div>
+        </div>
+        <div class="role-grid" data-reveal>
+          <article class="role"><span>城市传播</span><strong>内容生产者</strong></article>
+          <article class="role"><span>政务服务</span><strong>平台运营者</strong></article>
+          <article class="role"><span>产业项目</span><strong>数字化服务商</strong></article>
+          <article class="role"><span>舆情治理</span><strong>数据分析与预警支撑方</strong></article>
+          <article class="role"><span>AI 应用</span><strong>智能化转型方案设计与落地团队</strong></article>
+        </div>
+      </section>
+
+      <section id="overview" class="section" data-section>
+        <div class="matrix-story">
+          <aside class="matrix-visual" aria-label="七大产品与服务体系" data-reveal>
+            <h3>七大产品与服务体系</h3>
+            <p>既可独立交付，也可组合为综合项目服务包。</p>
+            <div class="capability-list">
+              <div class="capability-item is-active" data-capability="content"><em>01</em><div><strong>内容传播与品牌策划</strong><span>可理解、可传播、可沉淀的公共表达。</span></div></div>
+              <div class="capability-item" data-capability="platform"><em>02</em><div><strong>新媒体平台运营</strong><span>稳定、专业、低沟通成本的新媒体运维。</span></div></div>
+              <div class="capability-item" data-capability="event"><em>03</em><div><strong>活动策划与直播执行</strong><span>从主题策划到数据复盘的活动链路。</span></div></div>
+              <div class="capability-item" data-capability="digital"><em>04</em><div><strong>专题制作与数字内容产品</strong><span>专题、H5、长图、互动与数据可视化。</span></div></div>
+              <div class="capability-item" data-capability="data"><em>05</em><div><strong>舆情监测与数据服务</strong><span>更早发现问题，更准判断态势。</span></div></div>
+              <div class="capability-item" data-capability="tech"><em>06</em><div><strong>技术开发与数字化系统</strong><span>把业务流程转化为可运行系统。</span></div></div>
+              <div class="capability-item" data-capability="ai"><em>07</em><div><strong>AI 应用与智能化服务</strong><span>从内容生产单位走向智能服务平台。</span></div></div>
+            </div>
+          </aside>
+          <div class="matrix-steps">
+            <article class="matrix-step" data-step="content" data-reveal>
+              <h3>先命名能力</h3>
+              <p>把内容传播、平台运营、活动执行、技术开发、舆情数据和 AI 应用从部门经验中提取出来，形成客户可以理解的产品语言。</p>
+            </article>
+            <article class="matrix-step" data-step="data" data-reveal>
+              <h3>再证明价值</h3>
+              <p>用龙湾机场公众号、园博园 AI 助手、网络舆情信息服务、温州农品联播等案例，说明能力已经在真实场景中被验证。</p>
+            </article>
+            <article class="matrix-step" data-step="ai" data-reveal>
+              <h3>最后组合交付</h3>
+              <p>面向政务、活动、舆情、AI、县域融媒等不同客户场景，把七大板块重新组合成可销售、可复制、可迭代的服务包。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="content" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">板块一</p>
+            <h2>内容传播与品牌策划</h2>
+            <p>内容传播不是“发稿”，而是帮助客户把复杂信息转化为可理解、可传播、可沉淀的公共表达。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 01</span><h3>品牌传播与广告策划</h3></div><div><p>从传播策略到投放执行的一体化品牌服务。</p><div class="meta-row"><span class="chip">广告策划</span><span class="chip">创意设计</span><span class="chip">传播发布</span><span class="chip">效果复盘</span><span class="chip">案例：温州银行广告策划</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 02</span><h3>政务传播与重大活动宣传</h3></div><div><p>围绕政府重点工作，提供从主题策划到宣传执行的全链条服务。</p><div class="meta-row"><span class="chip">主题报道</span><span class="chip">现场报道</span><span class="chip">短视频</span><span class="chip">传播数据报告</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 03</span><h3>品牌包装与内容 IP 运营</h3></div><div><p>帮助政务部门和项目主体打造持续传播的品牌影响力。</p><div class="meta-row"><span class="chip">品牌定位</span><span class="chip">栏目策划</span><span class="chip">内容矩阵</span><span class="chip">案例申报</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="platform" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">板块二</p>
+            <h2>新媒体平台运营</h2>
+            <p>客户真正需要的是稳定、专业、低沟通成本的新媒体运维能力，从内容策划、排版设计、发布运维到数据复盘形成完整链路。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 04</span><h3>微信公众号代运营</h3></div><div><p>政企微信公众号的内容策划、编辑排版、长图设计、发布运维与数据分析。</p><div class="meta-row"><span class="chip">案例：龙湾国际机场公众号</span><span class="chip">稳定服务超 3 年</span><span class="chip">可复制推广</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 05</span><h3>网站与政务平台运维</h3></div><div><p>网站建设、内容维护、信创适配、网络安全保障与长期运维。</p><div class="meta-row"><span class="chip">案例：温州检察网</span><span class="chip">栏目设置</span><span class="chip">安全支持</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 06</span><h3>平台内容运营</h3></div><div><p>为政务部门和公共机构提供常态化内容生产、用户运营与数据支撑。</p><div class="meta-row"><span class="chip">学习强国温州学习平台</span><span class="chip">温州辟谣举报平台</span><span class="chip">温州城发官网</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="event" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">板块三</p>
+            <h2>活动策划与直播执行</h2>
+            <p>活动服务必须把主题策划、流程设计、现场组织、内容传播、直播互动、数据复盘连接成一条完整链路。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 07</span><h3>活动策划执行</h3></div><div><p>从调研构思到现场执行与复盘总结的全流程活动服务。</p><div class="meta-row"><span class="chip">中国农民丰收节文艺志愿服务</span><span class="chip">最美 in 温州</span><span class="chip">瓯江论数 数安中国</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 08</span><h3>直播带货与产业推广</h3></div><div><p>面向政企和地方产业主体的直播策划、执行、互动与复盘服务。</p><div class="meta-row"><span class="chip">温州农品联播</span><span class="chip">乡村振兴助农专场</span><span class="chip">文旅品牌推广</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="digital" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">板块四</p>
+            <h2>专题制作与数字内容产品</h2>
+            <p>专题页面、H5、长图、SVG 互动和数据可视化，适合承接政策解读、活动宣传、品牌展示、成果汇报和城市形象推广。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 09</span><h3>网页专题策划制作</h3></div><div><p>围绕政务宣传和品牌传播，提供专题策划、页面设计、内容采编与运维服务。</p><div class="meta-row"><span class="chip">栏目结构</span><span class="chip">视觉设计</span><span class="chip">前端制作</span><span class="chip">传播报告</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 10</span><h3>H5 与互动内容设计</h3></div><div><p>轻量化互动页面、SVG 交互排版和移动端传播产品。</p><div class="meta-row"><span class="chip">机场航线长图</span><span class="chip">温州设计集团内容排版</span><span class="chip">SVG 交互式排版</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="data" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">板块五</p>
+            <h2>舆情监测与数据服务</h2>
+            <p>舆情服务的本质不是堆数据，而是帮助客户更早发现问题、更准判断态势、更稳应对风险。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 11</span><h3>网络舆情监测与分析</h3></div><div><p>面向党政机关和重点单位的舆情监测、筛选、分析、预警与报告服务。</p><div class="meta-row"><span class="chip">浙江省体育局</span><span class="chip">温州市教育局</span><span class="chip">住建局</span><span class="chip">一鸣食品</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 12</span><h3>舆情数据接口与可视化</h3></div><div><p>为有数据接入和平台展示需求的客户提供舆情 API、可视化大屏和趋势分析。</p><div class="meta-row"><span class="chip">API 接口</span><span class="chip">可视化大屏</span><span class="chip">趋势分析</span><span class="chip">数据看板</span></div></div></article>
+            <div class="highlight-panel"><h3>数据服务亮点</h3><ul class="highlight-list"><li>对传播规律、风险等级和处置需求有深度理解。</li><li>关键词、时间、平台、预警规则多维监测。</li><li>日报、周报、月报、专题和突发研判。</li><li>可结合可视化大屏、数据接口和 AI 分析。</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tech" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">板块六</p>
+            <h2>技术开发与数字化系统</h2>
+            <p>技术开发是从内容单位走向数字服务单位的关键支撑，把客户业务流程转化为可运行、可管理、可沉淀的数据系统。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 13</span><h3>信息化系统定制开发</h3></div><div><p>面向政企单位的管理系统、H5、小程序和业务平台定制开发。</p><div class="meta-row"><span class="chip">平阳交警“数秩”云平台</span><span class="chip">应急考试报名平台</span><span class="chip">扣留车辆管理平台</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 14</span><h3>安全培训考试云平台</h3></div><div><p>面向应急部门和培训机构的在线培训、考试管理与安全台账服务。</p><div class="meta-row"><span class="chip">平阳应急局</span><span class="chip">龙港应急局</span><span class="chip">6 家安全培训机构</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 15</span><h3>交警“数秩”云平台</h3></div><div><p>交通安全设施管理、隐患上报、违法采集与点对点宣教一体化平台。</p><div class="meta-row"><span class="chip">设施在线管理</span><span class="chip">隐患实时上报</span><span class="chip">数据汇总</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">板块七</p>
+            <h2>AI 应用与智能化服务</h2>
+            <p>AI 应用是 2026 版手册中最需要突出的新增能力，代表温州新闻网从内容生产单位向智能服务平台升级。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 16 · 重点推介</span><h3>AI 智能体定制搭建</h3></div><div><p>基于大语言模型的 AI 智能体设计、开发、部署和应用服务。</p><div class="meta-row"><span class="chip">园博园 AI 助手</span><span class="chip">应急小助手</span><span class="chip">辟谣侠 AI 智能体原型</span><span class="chip">私有化部署</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 17</span><h3>AIGC 一体化内容生成工具</h3></div><div><p>基于多模态大模型的文字、图片、视频内容生成能力，已完成技术验证与原型开发。</p><div class="meta-row"><span class="chip">新闻稿件生成</span><span class="chip">海报封面</span><span class="chip">短视频生成</span><span class="chip">审核管理</span></div></div></article>
+            <article class="product-card"><div><span class="num">产品 18</span><h3>前沿 AI 应用部署与咨询</h3></div><div><p>大语言模型部署、AI 架构设计、模型选型评估与业务智能化升级咨询。</p><div class="meta-row"><span class="chip">私有化部署</span><span class="chip">模型选型</span><span class="chip">安全评估</span><span class="chip">合规咨询</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="county" class="section product-band" data-section>
+        <div class="band-layout">
+          <div class="band-intro" data-reveal>
+            <p class="kicker">县域方向</p>
+            <h2>县域融媒与平台融合</h2>
+            <p>县域是温州新闻网服务能力外溢的重要方向，为县级融媒体中心和地方公共服务项目提供协作支撑。</p>
+          </div>
+          <div class="product-grid" data-reveal>
+            <article class="product-card"><div><span class="num">产品 19</span><h3>龙港媒共体服务</h3></div><div><p>面向县级融媒机构的人力资源、技术支撑、平台协作与外宣拓展一站式服务。</p><div class="meta-row"><span class="chip">融媒平台协作</span><span class="chip">人力支持</span><span class="chip">技术服务</span><span class="chip">外宣拓展</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" class="section" data-section>
+        <div class="section-head" data-reveal>
+          <span class="section-index">Case Library</span>
+          <div>
+            <h2>重点案例库</h2>
+            <p class="section-lede">案例不只是展示做过什么，而是证明能力已经被真实场景验证，并具备复制、组合和推广条件。</p>
+          </div>
+        </div>
+        <div class="case-tools" aria-label="案例筛选" data-reveal>
+          <button class="filter-btn is-active" type="button" data-filter="all">全部</button>
+          <button class="filter-btn" type="button" data-filter="AI">AI</button>
+          <button class="filter-btn" type="button" data-filter="舆情">舆情</button>
+          <button class="filter-btn" type="button" data-filter="运营">运营</button>
+          <button class="filter-btn" type="button" data-filter="数字化">数字化</button>
+          <button class="filter-btn" type="button" data-filter="县域">县域</button>
+        </div>
+        <div class="case-grid" data-reveal>
+          <article class="case-card" data-type="AI"><span class="tag">AI 智能体</span><div><h3>园博园 AI 助手</h3><p>AI 能力在文旅场景落地，形成可复制智能服务样板。</p></div></article>
+          <article class="case-card" data-type="舆情"><span class="tag">舆情监测</span><div><h3>网络舆情信息服务</h3><p>提升政府对舆情风险的发现、判断与应对能力。</p></div></article>
+          <article class="case-card" data-type="运营"><span class="tag">新媒体运营</span><div><h3>龙湾机场公众号代运营</h3><p>3 年标准化服务，具备复制推广条件。</p></div></article>
+          <article class="case-card" data-type="运营"><span class="tag">直播带货</span><div><h3>温州农品联播</h3><p>推动本土农产品和地方产业传播转化。</p></div></article>
+          <article class="case-card" data-type="县域"><span class="tag">县域融媒</span><div><h3>龙港媒共体</h3><p>探索市级媒体与县域融媒协同模式。</p></div></article>
+          <article class="case-card" data-type="数字化"><span class="tag">数字化系统</span><div><h3>安全培训考试云平台</h3><p>线下培训管理流程在线化、数据化。</p></div></article>
+          <article class="case-card" data-type="数字化"><span class="tag">数字化系统</span><div><h3>交警“数秩”云平台</h3><p>服务基层交通治理数字化。</p></div></article>
+          <article class="case-card" data-type="运营"><span class="tag">平台运营</span><div><h3>学习强国温州学习平台</h3><p>支撑重要内容平台长期稳定运营。</p></div></article>
+        </div>
+      </section>
+
+      <section id="packages" class="section" data-section>
+        <div class="section-head" data-reveal>
+          <span class="section-index">Service Packages</span>
+          <div>
+            <h2>五种标准服务包</h2>
+            <p class="section-lede">七大板块可以被重新组合为面向经营团队的标准化推介方案。</p>
+          </div>
+        </div>
+        <div class="package-grid" data-reveal>
+          <details class="package" open><summary><span class="package-code">方案 A</span><span class="package-title">政务新媒体年度运营包</span></summary><div class="package-body">面向政务部门、国企、公共服务窗口。包含公众号代运营、内容策划、长图/SVG 设计、紧急发布、数据月报和年度复盘。</div></details>
+          <details class="package"><summary><span class="package-code">方案 B</span><span class="package-title">重大活动传播服务包</span></summary><div class="package-body">面向活动主办方、政务部门、行业协会。包含活动策划、宣传方案、新闻稿件、专题页面、短视频、直播执行和数据复盘。</div></details>
+          <details class="package"><summary><span class="package-code">方案 C</span><span class="package-title">舆情监测与风险预警包</span></summary><div class="package-body">面向党政机关、网信部门、行业主管、国企和上市公司。包含关键词监测、舆情筛选、日/周/月报、突发预警、专题分析和可视化展示。</div></details>
+          <details class="package"><summary><span class="package-code">方案 D</span><span class="package-title">AI 智能化应用包</span></summary><div class="package-body">面向政企单位、公共服务机构、园区平台和知识管理部门。包含 AI 智能体定制、知识库问答、数据分析、智能报告、Web/小程序入口和私有化部署。</div></details>
+          <details class="package"><summary><span class="package-code">方案 E</span><span class="package-title">县域融媒协作包</span></summary><div class="package-body">面向县级融媒中心、县域宣传部门和地方公共平台。包含融媒协作、内容支撑、技术支持、外宣传播、平台运营和人员机制支撑。</div></details>
+        </div>
+      </section>
+
+      <section id="cooperation" class="section" data-section>
+        <div class="section-head" data-reveal>
+          <span class="section-index">Cooperation</span>
+          <div>
+            <h2>合作方式</h2>
+            <p class="section-lede">从长期运营到专项项目，从系统开发到数据订阅，让不同客户都能找到合适的协作入口。</p>
+          </div>
+        </div>
+        <div class="cooperation-grid" data-reveal>
+          <article class="coop"><strong>年度服务</strong><span>新媒体代运营、平台运维、舆情监测、内容运营等长期服务。</span></article>
+          <article class="coop"><strong>专项项目</strong><span>重大活动传播、专题制作、品牌包装、短视频、直播等阶段性任务。</span></article>
+          <article class="coop"><strong>系统开发</strong><span>小程序、H5、管理系统、考试平台、数据平台等技术项目。</span></article>
+          <article class="coop"><strong>数据订阅</strong><span>舆情监测、数据接口、专题分析、风险预警等数据服务。</span></article>
+          <article class="coop"><strong>AI 定制</strong><span>智能体、知识库问答、AIGC 工具、AI 咨询和私有化部署。</span></article>
+          <article class="coop"><strong>综合服务包</strong><span>内容、平台、技术、数据、活动和 AI 能力组合交付的复杂项目。</span></article>
+        </div>
+      </section>
+
+      <section id="finale" class="finale" data-section>
+        <div class="finale-inner" data-reveal>
+          <div class="finale-words" aria-label="结尾主张">
+            <span>从内容到系统</span>
+            <span>从传播到数据</span>
+            <span>从项目到产品</span>
+            <span>从经验到能力</span>
+          </div>
+          <p>2026 版《温州新闻网产品和服务手册》，不是一次简单汇编，而是一次能力重构。它要回答的，不是“各部门分别做了什么”，而是温州新闻网能为城市、部门、企业和公众解决什么问题。</p>
+          <ul class="finale-list">
+            <li>一套动态更新的产品库</li>
+            <li>一套统一对外的话术</li>
+            <li>一套跨部门协同机制</li>
+            <li>一套可持续转化的经营工具</li>
+          </ul>
+          <p><strong>温州新闻网 · 城市智媒服务平台</strong><br>wzrb.com.cn</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const progressBar = document.querySelector("#progressBar");
+      const revealItems = document.querySelectorAll("[data-reveal]");
+      const sections = document.querySelectorAll("[data-section]");
+      const tocLinks = document.querySelectorAll(".toc a");
+      const capabilityItems = document.querySelectorAll(".capability-item");
+      const matrixSteps = document.querySelectorAll(".matrix-step");
+
+      document.querySelectorAll("#hero [data-reveal]").forEach((item) => {
+        item.classList.add("is-visible");
+      });
+
+      function updateProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = max > 0 ? (scrollTop / max) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      }
+
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      updateProgress();
+
+      if (reduceMotion) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.04 });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+      }
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          tocLinks.forEach((link) => {
+            link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+          });
+        });
+      }, { rootMargin: "-38% 0px -56% 0px", threshold: 0.01 });
+
+      sections.forEach((section) => sectionObserver.observe(section));
+
+      const stepObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const key = entry.target.dataset.step;
+          capabilityItems.forEach((item) => {
+            item.classList.toggle("is-active", item.dataset.capability === key);
+          });
+        });
+      }, { rootMargin: "-42% 0px -42% 0px", threshold: 0.01 });
+
+      matrixSteps.forEach((step) => stepObserver.observe(step));
+
+      document.querySelectorAll(".filter-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          document.querySelectorAll(".filter-btn").forEach((item) => {
+            item.classList.toggle("is-active", item === button);
+          });
+          document.querySelectorAll(".case-card").forEach((card) => {
+            card.hidden = filter !== "all" && card.dataset.type !== filter;
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

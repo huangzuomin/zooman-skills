@@ -1,0 +1,8 @@
+# Generated from prompts/profiles/default.toml and adapters/skill/build.py.
+interface:
+  display_name: "机关材料工作流"
+  short_description: "生成可审、可改、可追溯的机关材料草案包并规范中文公文格式"
+  default_prompt: "使用 $official-material-workflow 处理一项机关材料任务：先判断文种和行文方向，必要时生成任务简报、证据说明、草稿和审稿报告；明确低风险时可直接起草通知、请示、报告、函、纪要、简报或专报。"
+
+policy:
+  allow_implicit_invocation: true
